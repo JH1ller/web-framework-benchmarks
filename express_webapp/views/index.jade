@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  for post in posts
+    article.media.content-section
+      img.rounded-circle.article-img(src='/uploads/' + post.author.profileImage)
+      .media-body
+        .article-metadata
+          a.mr-2(href="#") #{post.author.username}
+        h2
+          a.article-title(href="#") #{post.title}
+        p.article-content #{post.content}
+  
+
+
+
+

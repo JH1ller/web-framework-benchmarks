@@ -1,0 +1,53 @@
+doctype html
+html(lang='en')
+    head
+        if title
+            title Express Blog - #{title}
+        else
+            title Express Blog
+        title= title
+        link(href='/stylesheets/bootstrap.min.css', rel='stylesheet')
+        link(href='/stylesheets/style.css', rel='stylesheet')
+    body
+        nav.navbar.navbar-expand-md.navbar-dark.bg-steel.fixed-top(role='navigation')
+            .container
+                a.navbar-brand.mr-4(href='/') Express Blog
+                button.navbar-toggler(type='button', data-toggle='collapse', data-target="#navbarToggle", aria-controls="navbarToggle", aria-expanded="false")
+                    span.navbar-toggler-icon
+                .collapse.navbar-collapse(id='navbarToggle')
+                    ul.navbar-nav.mr-auto
+                        li.nav-item
+                            a.nav-link(href='/') Home
+                        li.nav-item
+                            a.nav-link(href='/') About
+                    ul.navbar-nav.ml-auto
+                        if !user
+                            li.nav-item(class=(title == 'Login' ? 'active' : ''))
+                                    a.nav-link(href='/users/login') Login
+                            li.nav-item(class=(title == 'Register' ? 'active' : ''))
+                                a.nav-link(href='/users/register') Register
+                        if user
+                            li.nav-item
+                                a.nav-link(href='/posts/new') New Post
+                            li.nav-item
+                                a.nav-link(href='/profiles/' + user.username) My Profile (#{user.username})
+                            li.nav-item
+                                a.nav-link(href='/users/logout') Logout
+        .container.mt-5
+            .row
+                .col-md-8
+                    != messages()
+                    block content
+                .col-md-4
+                    .content-section
+                        h3 Sidebar
+                        p.text-muted Links to potential additional features.
+                        ul.list-group
+                            li.list-group-item.list-group-item-light Latest Posts
+                            li.list-group-item.list-group-item-light Announcements
+                            li.list-group-item.list-group-item-light Calendars
+                            li.list-group-item.list-group-item-light etc
+
+        script(src="/javascripts/jquery.min.js")
+        script(src="/javascripts/popper.min.js")
+        script(src="/javascripts/bootstrap.min.js")

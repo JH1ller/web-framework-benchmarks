@@ -1,0 +1,17 @@
+extends layout
+
+block content
+    h2.page-header Create Post
+    .error-display.mt-5
+        if errors
+            each error, i in errors
+                .alert.alert-danger #{error.msg}
+    form.mt-5(method='post', action='/posts/new')
+        .form-group
+            label(for='title') Title
+            input.form-control(type='text', name='title')
+        .form-group
+            label(for='content') Content
+            input.form-control(type='textarea', name='content')
+        
+        button.btn.btn-primary.mt-2(type='submit', name='submit') Submit

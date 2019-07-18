@@ -1,0 +1,15 @@
+extends layout
+
+block content
+    .content-section
+        h2.page-header Login
+
+        form.mt-5(method='post', action='/users/login')
+            .form-group
+                label(for='username') Username
+                input.form-control(type='text', name='username')
+            .form-group
+                label(for='password') Password
+                input.form-control(type='password', name='password')
+                
+            button.btn.btn-primary.mt-2.mb-2(type='submit', name='submit') Login

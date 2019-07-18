@@ -1,0 +1,28 @@
+extends layout
+
+block content
+    .content-section
+        h2.page-header Join today
+        .error-display.mt-5
+            if errors
+                each error, i in errors
+                    .alert.alert-danger #{error.msg}
+        form.mt-5(method='post', action='/users/register', enctype='multipart/form-data')
+            .form-group
+                label(for='username') Username *
+                input.form-control(type='text', name='username', placeholder='Enter username')
+            .form-group
+                label(for='email') Email address *
+                input.form-control(type='email', name='email', placeholder='Enter email')
+            .form-group
+                label(for='password') Password *
+                input.form-control(type='password', name='password', placeholder='Enter password')
+                small.form-text.text-muted(id='pwHelp') Password must meet the following criteria:
+            .form-group
+                label(for='password2') Confirm Password *
+                input.form-control(type='password', name='password2', placeholder='Confirm password')
+            .form-group
+                label(for='password2') Profile Image
+                input.form-control(type='file', name='profileImage')
+                
+            button.btn.btn-primary.mt-2(type='submit', name='submit') Submit

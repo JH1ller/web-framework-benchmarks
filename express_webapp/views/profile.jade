@@ -1,0 +1,18 @@
+extends layout
+
+block content
+    if !error
+        .content-section
+            .media
+                img.rounded-circle.account-img(src= imgsrc)
+                .media-body
+                    h2.account-heading= username
+                    p.text-secondary= email
+
+
+
+    if error
+        h1= 'User ' + username + ' ' + error
+
+
+
